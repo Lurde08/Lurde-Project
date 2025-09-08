@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AutoHub</title>
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="bootstrap-4.6.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="font-awesome(4.7.0)/css/font-awesome.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto&family=Playfair+Display&family=Montserrat&family=Lobster&family=Raleway&display=swap"
+        rel="stylesheet">
+
+    <!-- /Styles/ -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background: #f4f4f4;
+            font-weight: bold;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            color: #fff;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            background: white;
+            left: 0;
+            bottom: -4px;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+
+        .menu-icon {
+            display: none;
+            font-size: 2rem;
+            cursor: pointer;
+            user-select: none;
+        }
+
+
+        #menu-toggle {
+            display: none;
+        }
+
+        header {
+            position: relative;
+            height: 100vh;
+            background: url('images/Screenshot_20230815_190109_com.huawei.hwsearch%20%282%29.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .header-content {
+            z-index: 2;
+            padding: 1rem 2rem;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            white-space: nowrap;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        #typed {
+            display: inline-block;
+        }
+
+        section {
+            padding: 4rem 2rem;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 2rem;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 2rem;
+        }
+
+        .gallery2 img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery2 img:hover {
+            transform: scale(1.05);
+        }
+
+        #contact {
+            background: #fff;
+            padding: 4rem 2rem;
+        }
+
+        #contact form {
+            max-width: 500px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #contact input,
+        #contact button {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #contact button {
+            background: #222;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        #contact button:hover {
+            background: #444;
+        }
+
+        footer {
+            background: #111;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .social-icons i {
+            margin: 0 10px;
+            font-size: 1.5rem;
+            color: #fff;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons i:hover {
+            color: #1da1f2;
+        }
+
+        #services p {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        #about p {
+            font-family: 'Playfair Display', serif;
+        }
+
+        #contact p {
+            font-family: 'Raleway', sans-serif;
+        }
+
+        footer p {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .special-intro {
+            font-family: 'Lobster', cursive;
+        }
+
+        /* /Media Queries 768/ */
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: block;
+                color: white;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.7);
+                position: absolute;
+                top: 100%;
+                left: 0;
+                padding: 1rem;
+            }
+
+            #menu-toggle:checked+.menu-icon+.nav-links {
+                display: flex;
+            }
+
+            .nav-links a {
+                margin: 0.5rem 0;
+            }
+
+            header h1 {
+                font-size: 2rem;
+                text-align: center;
+                padding: 0 1rem;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            #contact form {
+                padding: 0 1rem;
+            }
+
+            footer {
+                padding: 2rem 1rem;
+            }
+
+            .social-icons i {
+                font-size: 1.2rem;
+                margin: 0 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Nav-Bar -->
+    <nav>
+        <div class="logo">ⱠɄⱤĐɆ Auto's</div>
+
+        <input type="checkbox" id="menu-toggle" />
+        <label for="menu-toggle" class="menu-icon">&#9776;</label>
+
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#models">Models</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- // Header Section -->
+    <header data-aos="fade-in">
+        <div class="header-content">
+            <h1><span id="typed"></span></h1>
+        </div>
+    </header>
+
+
+
+    <section id="models" data-aos="fade-up">
+        <h2>Featured Models</h2>
+        <p>Check out our latest electric and hybrid car models built for performance and sustainability.</p>
+        <div class="gallery2">
+            <img src="images/Screenshot_20230815_190022_com.huawei.hwsearch (2).jpg" alt="Car 1">
+            <img src="images/Screenshot_20230815_190105_com.huawei.hwsearch (2).jpg" alt="Car 2">
+            <img src="images/Screenshot_20230815_190124_com.huawei.hwsearch (2).jpg" alt="Car 3">
+            <img src="images/Screenshot_20230815_190114_com.huawei.hwsearch (2).jpg" alt="Car 4">
+        </div>
+    </section>
+
+    <!--  NEW IMAGE GALLERY SECTION -->
+    <section data-aos="fade-up">
+        <h2>Car Gallery</h2>
+        <div class="gallery">
+            <img src="images/Screenshot_20230815_190035_com.huawei.hwsearch (2).jpg" alt="Car 1">
+            <img src="images/Screenshot_20230815_190128_com.huawei.hwsearch (2).jpg" alt="Car 2">
+            <img src="images/Screenshot_20230815_190133_com.huawei.hwsearch (2).jpg" alt="Car 3">
+            <img src="images/Screenshot_20230815_190138_com.huawei.hwsearch (2).jpg" alt="Car 4">
+        </div>
+    </section>
+    <!-- /Bad Ass Section/ -->
+    <section id="services" data-aos="fade-up">
+        <h2>Our Services</h2>
+        <p>From car financing to repair and detailing — AutoHub has you covered.</p>
+        <p>At AutoHub, we go beyond just selling cars.
+            We offer expert vehicle maintenance and detailing to keep your car in peak condition.
+            Our financing options are flexible, fast, and tailored to your needs.
+            Need insurance? We’ve got you covered with trusted partners.
+            We provide 24/7 roadside assistance for your peace of mind.
+            Our team also offers trade-ins and valuation for your old vehicles.
+            Drive in, and experience the AutoHub difference — built for you.
+            <li
+                style="  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">
+                We specialize in luxury auto care tailored to fit your vehicle’s needs.</li>
+            <li
+                style="  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">
+                From diagnostics to detailing, we treat every ride like royalty.</li>
+            <li
+                style="  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">
+                Enjoy fast, reliable, and affordable servicing that keeps you moving.</li>
+            <li
+                style="  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">
+                Our team is driven by passion and powered by precision.</li>
+            <li
+                style="  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">
+                Wherever the road takes you — we make sure you get there in style.</li>
+        </p>
+    </section>
+
+    <!--  CONTACT FORM -->
+    <section id="contact" data-aos="fade-up">
+        <h2>Contact Us</h2>
+        <form>
+            <input type="text" placeholder="Your Name" required />
+            <input type="email" placeholder="Your Email" required />
+            <button type="submit">Send</button>
+        </form>
+    </section>
+    <!-- Footer -->
+    <footer data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+        <p>&copy; 2025 ⱠɄⱤĐɆ AutoHub. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-pinterest"></i></a>
+            <a href="#"><i class="fa fa-github"></i></a>
+        </div>
+    </footer>
+
+    <!-- AOS Script -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({});
+    </script>
+
+    <!-- Typed Script -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script>
+        const typed = new Typed("#typed", {
+            strings: ["ⱠɄⱤĐɆ Auto's", "Drive the Future...", "Innovation on Wheels...", "Sustainable Driving..."],
+            typeSpeed: 70,
+            backSpeed: 40,
+            loop: true,
+            backDelay: 1500,
+            showCursor: true,
+            cursorChar: "|"
+        });
+    </script>
+
+</body>
+
+</html>
